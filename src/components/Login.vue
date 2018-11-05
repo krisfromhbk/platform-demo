@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import { AUTH_LOGIN_REQUEST } from 'actions/auth'
+import { AUTH_LOGIN_REQUEST, AUTH_LOGOUT_REQUEST } from '@/store/actions/auth'
 
 export default {
   data () {
@@ -26,10 +26,12 @@ export default {
   methods: {
     login () {
       const { username, password } = this
-      this.$store.dispatch(AUTH_LOGIN_REQUEST, { username, password }).then( () => {
-        this.$router.push('/')
-      })
+      this.$store.dispatch(AUTH_LOGIN_REQUEST, { username, password })
     }
+  },
+
+  created () {
+    this.$store.dispatch(AUTH_LOGOUT_REQUEST)
   }
 }
 </script>

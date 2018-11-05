@@ -1,5 +1,5 @@
 import { AUTH_LOGIN_REQUEST, AUTH_LOGIN_SUCCESS, AUTH_LOGIN_ERROR, AUTH_LOGOUT_REQUEST, AUTH_LOGOUT_SUCCESS, AUTH_LOGOUT_ERROR } from '../actions/auth'
-import { USER_REQUEST } from '../actions/user'
+import { apiCall } from '@/utils/api'
 
 const state = { token: localStorage.getItem('user-token') || '', status: '' }
 
@@ -13,10 +13,10 @@ const actions = {
     commit(AUTH_LOGIN_REQUEST)
     try {
       // Обращение к API за токеном
-      let response = await apiCall(user)
+      let response = await apiCall('auth', 'post', user)
       localStorage.setItem('user-token', response.token)
       commit(AUTH_LOGIN_SUCCESS, response)
-    } catch(error) {
+    } catch (error) {
       commit(AUTH_LOGIN_ERROR)
       // Сделать общий обработчик ошибок с пересылкой логов на сервер
       console.log(error)
@@ -27,23 +27,23 @@ const actions = {
     commit(AUTH_LOGOUT_REQUEST)
     try {
       // Обращение к API для выхода (удаление токена на стороне сервера и обновление состояния пользователей онлайн)
-      let response = await apiCall(user)
+      // await apiCall(user)
       localStorage.removeItem('user-token')
       commit(AUTH_LOGOUT_SUCCESS)
-    } catch(error) {
+    } catch (error) {
       commit(AUTH_LOGOUT_ERROR)
       // Сделать общий обработчик ошибок с пересылкой логов на сервер
       console.log(error)
     }
   }
-},
+}
 
 const mutations = {
   [AUTH_LOGIN_REQUEST]: (state) => {
     state.status = 'logging in'
   },
   [AUTH_LOGIN_SUCCESS]: (state, response) => {
-    state.status = 'login success',
+    state.status = 'login success'
     state.token = response.token
   },
   [AUTH_LOGIN_ERROR]: (state) => {
