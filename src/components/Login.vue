@@ -13,6 +13,8 @@
 </template>
 
 <script>
+import { AUTH_LOGIN_REQUEST } from 'actions/auth'
+
 export default {
   data () {
     return {
@@ -24,7 +26,7 @@ export default {
   methods: {
     login () {
       const { username, password } = this
-      this.$store.dispatch(AUTH_REQUEST, { username, password }).then( () => {
+      this.$store.dispatch(AUTH_LOGIN_REQUEST, { username, password }).then( () => {
         this.$router.push('/')
       })
     }
