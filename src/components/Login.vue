@@ -13,7 +13,8 @@
 </template>
 
 <script>
-import { AUTH_LOGIN_REQUEST, AUTH_LOGOUT_REQUEST } from '@/store/actions/auth'
+import { mapActions } from 'vuex'
+import { AUTH_LOGIN_REQUEST } from '@/store/actions/auth'
 
 export default {
   data () {
@@ -24,14 +25,13 @@ export default {
   },
 
   methods: {
+    ...mapActions('auth', [
+      AUTH_LOGIN_REQUEST
+    ]),
     login () {
       const { username, password } = this
-      this.$store.dispatch(AUTH_LOGIN_REQUEST, { username, password })
+      this.AUTH_LOGIN_REQUEST({ username, password })
     }
-  },
-
-  created () {
-    this.$store.dispatch(AUTH_LOGOUT_REQUEST)
   }
 }
 </script>

@@ -2,6 +2,8 @@ import { AUTH_LOGIN_REQUEST, AUTH_LOGIN_SUCCESS, AUTH_LOGIN_ERROR, AUTH_LOGOUT_R
 import { apiCall } from '@/utils/api'
 import router from '@/router'
 
+const namespaced = true
+
 const state = { token: localStorage.getItem('user-token') || '', status: '' }
 
 const getters = {
@@ -66,6 +68,7 @@ const mutations = {
 }
 
 export default {
+  namespaced,
   state,
   getters,
   actions,

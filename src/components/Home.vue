@@ -7,12 +7,16 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 import { AUTH_LOGOUT_REQUEST } from '@/store/actions/auth'
 
 export default {
   methods: {
+    ...mapActions('auth', [
+      AUTH_LOGOUT_REQUEST
+    ]),
     logout () {
-      this.$store.dispatch(AUTH_LOGOUT_REQUEST)
+      this.AUTH_LOGOUT_REQUEST()
     }
   }
 }
