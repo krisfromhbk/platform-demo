@@ -1,5 +1,6 @@
 import { AUTH_LOGIN_REQUEST, AUTH_LOGIN_SUCCESS, AUTH_LOGIN_ERROR, AUTH_LOGOUT_REQUEST, AUTH_LOGOUT_SUCCESS, AUTH_LOGOUT_ERROR } from '../actions/auth'
 import { apiCall } from '@/utils/api'
+import router from '@/router'
 
 const state = { token: localStorage.getItem('user-token') || '', status: '' }
 
@@ -17,6 +18,7 @@ const actions = {
       let response = await apiCall('auth', 'post', user)
       localStorage.setItem('user-token', response.token)
       commit(AUTH_LOGIN_SUCCESS, response)
+      router.push('/')
     } catch (error) {
       commit(AUTH_LOGIN_ERROR)
       // Сделать общий обработчик ошибок с пересылкой логов на сервер
@@ -31,6 +33,7 @@ const actions = {
       // await apiCall(user)
       localStorage.removeItem('user-token')
       commit(AUTH_LOGOUT_SUCCESS)
+      router.push('/login')
     } catch (error) {
       commit(AUTH_LOGOUT_ERROR)
       // Сделать общий обработчик ошибок с пересылкой логов на сервер
