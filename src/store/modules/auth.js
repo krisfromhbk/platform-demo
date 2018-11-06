@@ -13,6 +13,7 @@ const actions = {
     commit(AUTH_LOGIN_REQUEST)
     try {
       // Обращение к API за токеном
+      console.log(user)
       let response = await apiCall('auth', 'post', user)
       localStorage.setItem('user-token', response.token)
       commit(AUTH_LOGIN_SUCCESS, response)
@@ -23,7 +24,7 @@ const actions = {
     }
   },
 
-  [AUTH_LOGOUT_REQUEST]: async ({ commit, dispatch }, user) => {
+  [AUTH_LOGOUT_REQUEST]: async ({ commit, dispatch }) => {
     commit(AUTH_LOGOUT_REQUEST)
     try {
       // Обращение к API для выхода (удаление токена на стороне сервера и обновление состояния пользователей онлайн)

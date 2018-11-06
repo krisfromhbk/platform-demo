@@ -4,8 +4,8 @@ const apiCall = (url, method, ...args) => new Promise((resolve, reject) => {
   axios({
     url: url,
     method: method,
-    data: args,
-    baseURL: 'http://localhost:5000/'
+    data: args[0],
+    baseURL: 'https://api.rocketparty.app/'
   })
   .then((response) => {
     resolve(response.data)
