@@ -16,7 +16,6 @@ const actions = {
     commit(AUTH_LOGIN_REQUEST)
     try {
       // Обращение к API за токеном
-      console.log(user)
       let response = await apiCall('auth', 'post', user)
       localStorage.setItem('user-token', response.token)
       commit(AUTH_LOGIN_SUCCESS, response)

@@ -1,0 +1,3 @@
+export const GET_TASKS_REQUEST = 'GET_ALL_REQUEST'
+export const GET_TASKS_SUCCESS = 'GET_ALL_SUCCESS'
+export const GET_TASKS_ERROR = 'GET_ALL_ERROR'
