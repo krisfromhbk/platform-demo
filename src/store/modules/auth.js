@@ -8,7 +8,8 @@ const state = { token: localStorage.getItem('user-token') || '', status: '' }
 
 const getters = {
   isAuthenticated: state => !!state.token,
-  authStatus: state => state.status
+  authStatus: state => state.status,
+  isLoggingIn: state => state.status === 'logging in'
 }
 
 const actions = {
