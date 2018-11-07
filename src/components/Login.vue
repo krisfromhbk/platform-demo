@@ -6,10 +6,12 @@
           <b-card-body class="d-flex flex-column align-items-center">
             <h4 class="mb-4">Авторизация</h4>
 
+            <div v-if="wrongData()">Неправильный логин/пароль</div>
             <b-form @submit.prevent="login">
               <b-form-group>
-                <b-form-input style="width: 22rem;" type="text" v-model="username" required placeholder="Логин сюды"></b-form-input>
+                <b-form-input style="width: 22rem;" type="text" v-model.trim="$v.username.$model" required placeholder="Логин сюды"></b-form-input>
               </b-form-group>
+              <div class="error" v-if="!$v.username.required">Field is required</div>
               <b-form-group class="mb-4">
                 <b-form-input type="password" v-model="password" required placeholder="А пароль сюды"></b-form-input>
               </b-form-group>
@@ -31,6 +33,7 @@
 import { mapActions, mapGetters } from 'vuex'
 import { AUTH_LOGIN_REQUEST } from '@/store/actions/auth'
 import PulseLoader from 'vue-spinner/src/PulseLoader.vue'
+import { required } from 'vuelidate/lib/validators'
 
 export default {
   data () {
@@ -40,12 +43,22 @@ export default {
     }
   },
 
+  validations: {
+    username: {
+      required
+    },
+    password: {
+      required
+    }
+  },
+
   methods: {
     ...mapActions('auth', [
       AUTH_LOGIN_REQUEST
     ]),
     ...mapGetters('auth', [
-      'isLoggingIn'
+      'isLoggingIn',
+      'wrongData'
     ]),
     login () {
       const { username, password } = this
