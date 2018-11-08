@@ -96,12 +96,6 @@ export default {
 </script>
 
 <style>
-  .test {
-    height: 100vh;
-  }
-  .test1 {
-    width: 100vw;
-  }
   @keyframes swing {
     15% {
       transform: translateX(5px);
