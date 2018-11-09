@@ -22,7 +22,7 @@ const actions = {
       let response = await apiCall('auth', 'post', user)
       localStorage.setItem('user-token', response.token)
       commit(AUTH_LOGIN_SUCCESS, response)
-      router.push('/')
+      router.push('/tasks')
     } catch (error) {
       commit(AUTH_LOGIN_ERROR)
       // Сделать общий обработчик ошибок с пересылкой логов на сервер

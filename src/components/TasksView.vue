@@ -6,7 +6,6 @@
         {{ task.shortDescription }}
       </b-card>
     </div> -->
-    <b-button v-on:click="process">Таски в студию</b-button>
   </div>
 </template>
 
@@ -45,10 +44,10 @@ export default {
     ]),
     ...mapGetters('tasks', [
       'isProcessing'
-    ]),
-    process () {
-      this.GET_TASKS_REQUEST()
-    }
+    ])
+  },
+  created () {
+    this.GET_TASKS_REQUEST()
   }
 }
 </script>
