@@ -1,17 +1,16 @@
 <template>
   <div>
     Ага, компонентик с тасками
-    <!-- <div class="d-flex align-items-center justify-content-center flex-container wrap ml-3 mr-3">
+    <div class="d-flex align-items-center justify-content-center flex-container wrap m-3">
       <b-card class="m-4" v-for="task in tasks" :key="task.id" style="width: 15rem; height: 8rem;" :title="task.title">
         {{ task.shortDescription }}
       </b-card>
-    </div> -->
+    </div>
   </div>
 </template>
 
 <script>
-import { mapActions, mapGetters } from 'vuex'
-import { GET_TASKS_REQUEST } from '@/store/actions/tasks'
+import { mapGetters, mapState } from 'vuex'
 
 export default {
   data () {
@@ -39,16 +38,14 @@ export default {
   },
 
   methods: {
-    ...mapActions('tasks', [
-      GET_TASKS_REQUEST
-    ]),
     ...mapGetters('tasks', [
       'isProcessing'
     ])
   },
-  created () {
-    this.GET_TASKS_REQUEST()
-  }
+
+  computed: mapState('tasks', [
+    'tasks'
+  ])
 }
 </script>
 

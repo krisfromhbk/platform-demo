@@ -25,12 +25,14 @@ const actions = {
   },
   [CLEAR_TASKS]: ({ commit, dispatch }) => {
     commit(CLEAR_TASKS)
+    localStorage.removeItem('tasks')
   }
 }
 
 const mutations = {
   [GET_TASKS_REQUEST]: (state) => {
     state.status = 'getting tasks'
+    state.tasks = ''
   },
   [GET_TASKS_SUCCESS]: (state, response) => {
     state.status = 'get success'
