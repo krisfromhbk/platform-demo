@@ -2,8 +2,20 @@
   <div>
     Ага, компонентик с тасками
     <div class="d-flex align-items-center justify-content-center flex-container wrap m-3">
-      <b-card class="m-4" v-for="task in tasks" :key="task.id" style="width: 15rem; height: 8rem;" :title="task.title">
-        {{ task.shortDescription }}
+      <b-card no-body class="m-4" v-for="task in tasks" :key="task.id" style="width: 15rem; height: 8rem;">
+        <div class="d-block ml-3 mr-3">
+          <div class="d-flex align-items-center justify-content-between">
+            <div class="mt-2"><h4>{{ task.title }}</h4></div>
+            <b-badge variant="success" style="">{{ task.solved }}</b-badge>
+          </div>
+          <div class="mb-2">
+            <b-badge variant="dark" style="">{{ task.type }}</b-badge>
+            <b-badge variant="info" style="">{{ task.value }}</b-badge>
+          </div>
+        </div>
+        <div class="ml-4">
+          {{ task.shortDescription }}
+        </div>
       </b-card>
     </div>
   </div>
@@ -15,25 +27,7 @@ import { mapGetters, mapState } from 'vuex'
 export default {
   data () {
     return {
-      // tasks: [
-      //   { id: 1, title: 'title', shortDescription: 'aga, text', description: 'nu-nu, mnogo teksta', value: 300, solved: 14 },
-      //   { id: 2, title: 'title', shortDescription: 'aga, text', description: 'nu-nu, mnogo teksta', value: 300, solved: 14 },
-      //   { id: 3, title: 'title', shortDescription: 'aga, text', description: 'nu-nu, mnogo teksta', value: 300, solved: 14 },
-      //   { id: 4, title: 'title', shortDescription: 'aga, text', description: 'nu-nu, mnogo teksta', value: 300, solved: 14 },
-      //   { id: 5, title: 'title', shortDescription: 'aga, text', description: 'nu-nu, mnogo teksta', value: 300, solved: 14 },
-      //   { id: 6, title: 'title', shortDescription: 'aga, text', description: 'nu-nu, mnogo teksta', value: 300, solved: 14 },
-      //   { id: 7, title: 'title', shortDescription: 'aga, text', description: 'nu-nu, mnogo teksta', value: 300, solved: 14 },
-      //   { id: 8, title: 'title', shortDescription: 'aga, text', description: 'nu-nu, mnogo teksta', value: 300, solved: 14 },
-      //   { id: 9, title: 'title', shortDescription: 'aga, text', description: 'nu-nu, mnogo teksta', value: 300, solved: 14 },
-      //   { id: 10, title: 'title', shortDescription: 'aga, text', description: 'nu-nu, mnogo teksta', value: 300, solved: 14 },
-      //   { id: 11, title: 'title', shortDescription: 'aga, text', description: 'nu-nu, mnogo teksta', value: 300, solved: 14 },
-      //   { id: 12, title: 'title', shortDescription: 'aga, text', description: 'nu-nu, mnogo teksta', value: 300, solved: 14 },
-      //   { id: 13, title: 'title', shortDescription: 'aga, text', description: 'nu-nu, mnogo teksta', value: 300, solved: 14 },
-      //   { id: 14, title: 'title', shortDescription: 'aga, text', description: 'nu-nu, mnogo teksta', value: 300, solved: 14 },
-      //   { id: 15, title: 'title', shortDescription: 'aga, text', description: 'nu-nu, mnogo teksta', value: 300, solved: 14 },
-      //   { id: 16, title: 'title', shortDescription: 'aga, text', description: 'nu-nu, mnogo teksta', value: 300, solved: 14 }
-      // ]
-      // tasks: null
+
     }
   },
 
