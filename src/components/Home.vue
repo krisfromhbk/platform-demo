@@ -2,11 +2,11 @@
   <div>
     <b-navbar toggleable="md" :sticky="true" type="dark" variant="primary" class="mb-4">
       <b-navbar-toggle target="nav_collapse"></b-navbar-toggle>
-      <b-navbar-brand href="#">NavBar</b-navbar-brand>
+      <b-navbar-brand href="/">NavBar</b-navbar-brand>
       <b-collapse is-nav id="nav_collapse">
         <b-navbar-nav>
-          <b-nav-item href="#">Каторга</b-nav-item>
-          <b-nav-item href="#">Топ решателей</b-nav-item>
+          <b-nav-item to="tasks">Каторга</b-nav-item>
+          <b-nav-item to="score">Топ решателей</b-nav-item>
         </b-navbar-nav>
         <!-- Right aligned nav items -->
         <b-navbar-nav class="ml-auto">
@@ -24,8 +24,9 @@
 
     <!-- Здесь будут отображаться таски -->
     <!-- <task-view/> -->
-
+    <router-view></router-view>
     <div class="test">Simple home page</div>
+
   </div>
 </template>
 
