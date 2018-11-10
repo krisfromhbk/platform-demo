@@ -24,7 +24,9 @@
 
     <!-- Здесь будут отображаться таски -->
     <!-- <task-view/> -->
-    <router-view></router-view>
+    <transition name="slide-fade" mode="out-in">
+      <router-view></router-view>
+    </transition>
     <div class="test">Scroll testing</div>
 
   </div>
@@ -57,5 +59,15 @@ export default {
 <style>
   .test {
     height: 150vh;
+  }
+  .slide-fade-enter-active {
+    transition: all .1s ease;
+  }
+  .slide-fade-leave-active {
+    transition: all .1s ease;
+  }
+  .slide-fade-enter, .slide-fade-leave-to {
+    transform: translateX(10px);
+    opacity: 0;
   }
 </style>
