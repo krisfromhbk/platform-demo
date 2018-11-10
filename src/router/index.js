@@ -3,7 +3,7 @@ import Router from 'vue-router'
 import Login from '@/components/Login'
 import Home from '@/components/Home'
 import Scoreboard from '@/components/Scoreboard'
-import TasksView from '@/components/TasksView'
+import TasksView from '@/components/Tasks'
 import store from '@/store'
 
 Vue.use(Router)
