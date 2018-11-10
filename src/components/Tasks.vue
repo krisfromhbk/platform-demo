@@ -1,6 +1,6 @@
 <template>
   <div>
-    Ага, компонентик с тасками
+    Ага, компонентик с тасками, накатить сортировку (по типам хотя бы)
     <div class="d-flex align-items-center justify-content-center flex-container wrap m-3">
       <task-preview v-for="(task, index) in tasks" v-bind:task="task" v-bind:index="index" v-bind:key="task.id" ></task-preview>
     </div>
