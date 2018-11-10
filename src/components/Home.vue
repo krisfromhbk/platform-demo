@@ -36,6 +36,7 @@
 import { mapActions } from 'vuex'
 import { AUTH_LOGOUT_REQUEST } from '@/store/actions/auth'
 import { GET_TASKS_REQUEST } from '@/store/actions/tasks'
+import { GET_SCORES_REQUEST } from '@/store/actions/scores'
 
 export default {
   methods: {
@@ -45,6 +46,9 @@ export default {
     ...mapActions('tasks', {
       GET_TASKS_REQUEST
     }),
+    ...mapActions('scores', [
+      GET_SCORES_REQUEST
+    ]),
     logout () {
       this.AUTH_LOGOUT_REQUEST()
     }
@@ -52,6 +56,7 @@ export default {
 
   created () {
     this.GET_TASKS_REQUEST()
+    this.GET_SCORES_REQUEST()
   }
 }
 </script>

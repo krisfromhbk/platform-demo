@@ -1,5 +1,6 @@
 import { AUTH_LOGIN_REQUEST, AUTH_LOGIN_SUCCESS, AUTH_LOGIN_ERROR, AUTH_LOGOUT_REQUEST, AUTH_LOGOUT_SUCCESS, AUTH_LOGOUT_ERROR } from '../actions/auth'
 import { CLEAR_TASKS } from '@/store/actions/tasks'
+import { CLEAR_SCORES } from '@/store/actions/scores'
 import { apiCall } from '@/utils/api'
 import router from '@/router'
 
@@ -33,6 +34,7 @@ const actions = {
   [AUTH_LOGOUT_REQUEST]: async ({ commit, dispatch }) => {
     commit(AUTH_LOGOUT_REQUEST)
     dispatch('tasks/' + CLEAR_TASKS, null, { root: true })
+    dispatch('scores/' + CLEAR_SCORES, null, { root: true })
     try {
       // Обращение к API для выхода (удаление токена на стороне сервера и обновление состояния пользователей онлайн)
       // await apiCall(user)

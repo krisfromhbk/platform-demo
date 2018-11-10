@@ -1,4 +1,4 @@
-import { GET_SCORES_REQUEST, GET_SCORES_SUCCESS, GET_SCORES_ERROR, CLEAR_SCORES } from '../actions/score'
+import { GET_SCORES_REQUEST, GET_SCORES_SUCCESS, GET_SCORES_ERROR, CLEAR_SCORES } from '../actions/scores'
 import { apiCall } from '@/utils/api'
 
 const namespaced = true

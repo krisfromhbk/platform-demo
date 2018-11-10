@@ -4,6 +4,7 @@ import Login from '@/components/Login'
 import Home from '@/components/Home'
 import Scoreboard from '@/components/Scoreboard'
 import TasksView from '@/components/Tasks'
+import About from '@/components/About'
 import store from '@/store'
 
 Vue.use(Router)
@@ -31,7 +32,12 @@ export default new Router({
       name: 'Home',
       component: Home,
       beforeEnter: ifAuthenticated,
+      redirect: '/about',
       children: [
+        {
+          path: '/about',
+          component: About
+        },
         {
           path: 'tasks',
           component: TasksView
